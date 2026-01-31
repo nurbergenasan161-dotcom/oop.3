@@ -32,7 +32,6 @@ public class MemberRepositoryImpl implements MemberRepository {
             throw new RuntimeException(e);
         }
     }
-
     @Override
     public List<Member> findAll() {
         List<Member> members = new ArrayList<>();

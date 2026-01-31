@@ -1,21 +1,23 @@
 package services;
 
 import entities.Member;
-import exceptions.InvalidInputException;
-import repositories.MemberRepository;
+import repositories.MemberRepositoryImpl;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MemberService {
 
-    private final MemberRepository repo;
+    private final MemberRepositoryImpl repo;
 
-    public MemberService(MemberRepository repo) {
+    public MemberService(MemberRepositoryImpl repo) {
         this.repo = repo;
     }
 
-    public Member createMember(String name, String email) {
-        if (name == null || email == null) {
-            throw new InvalidInputException("Invalid input");
-        }
-        return repo.create(new Member(name, email));
+    public List<Member> findMembersByEmailDomain(String domain) {
+        return repo.findAll().stream()
+                .filter(m -> m.getEmail().endsWith(domain))
+                .collect(Collectors.toList());
     }
 }
+
