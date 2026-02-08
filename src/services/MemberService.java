@@ -13,11 +13,17 @@ public class MemberService {
     public MemberService(MemberRepositoryImpl repo) {
         this.repo = repo;
     }
-
     public List<Member> findMembersByEmailDomain(String domain) {
         return repo.findAll().stream()
                 .filter(m -> m.getEmail().endsWith(domain))
                 .collect(Collectors.toList());
     }
+
+    public List<Member> filterMembersByEmailDomain(List<Member> members, String domain) {
+        return members.stream()
+                .filter(m -> m.getEmail().endsWith(domain))
+                .collect(Collectors.toList());
+    }
 }
+
 
