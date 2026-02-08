@@ -1,5 +1,6 @@
 package edu.aitu.oop3.db;
-import edu.aitu.oop3.db.DatabaseConnection;
+import fitnessclub.persistence;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,7 +8,7 @@ import java.sql.SQLException;
 public class DemoUsersExample {
     public static void main(String[] args) {
         System.out.println("Demo: create table, insert, select");
-        try (Connection connection = DatabaseConnection.getConnection()) {
+        try (Connection connection = persistence.DatabaseConnection.getConnection()) {
             createTableIfNeeded(connection);
             insertUser(connection, "Alice", "alice@example.com");
             insertUser(connection, "Bob", "bob@example.com");

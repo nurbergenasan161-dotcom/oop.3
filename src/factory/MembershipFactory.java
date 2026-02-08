@@ -1,18 +1,18 @@
 package factory;
 
-import entities.Membership;
+import fitnessclub.domain;
 
 public class MembershipFactory {
 
-    public static Membership createMembership(String type) {
+    public static domain.Membership createMembership(String type) {
         if (type.equalsIgnoreCase("monthly")) {
-            return new Membership.Builder()
+            return new domain.Membership.Builder()
                     .type("Monthly")
                     .duration(30)
                     .price(50)
                     .build();
         } else if (type.equalsIgnoreCase("yearly")) {
-            return new Membership.Builder()
+            return new domain.Membership.Builder()
                     .type("Yearly")
                     .duration(365)
                     .price(500)
